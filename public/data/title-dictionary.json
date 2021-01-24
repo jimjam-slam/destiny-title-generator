@@ -3,7 +3,7 @@
     "{{=it.adjective}} {{=it.noun_role}}",
     "{{=it.noun_role}} of {{=it.noun_concept}}",
     "{{=it.adj_noun}} of {{=it.noun_concept}}",
-    "{{=it.adj_noun}} of {{=it.noun_role}}s",
+    "{{=it.adj_noun}} of {{=it.noun_role_plural}}",
     "{{=it.noun_concept}}'s {{=it.noun_role}}",
     "the {{=it.adjective}} {{=it.noun_role}}",
     "the {{=it.adjective}}"
@@ -26,7 +26,6 @@
       "deathsinger",
       "darkblade"
     ],
-    
     "adj_noun": [
       "betrayer",
       "defiler",
@@ -34,9 +33,9 @@
       "slayer",
       "devourer",
       "flayer",
-      "restorer"
+      "restorer",
+      "eater"
     ],
-  
     "noun_role": [
       "kell",
       "king",
@@ -52,7 +51,21 @@
       "descendent",
       "ancestor"
     ],
-  
+    "noun_role_plural": [
+      "kells",
+      "kings",
+      "minds",
+      "confluxes",
+      "guardians",
+      "emperors",
+      "masters",
+      "apprentices",
+      "priests",
+      "fanatics",
+      "templars",
+      "descendents",
+      "ancestors"
+    ],
     "noun_concept": [
       "darkness",
       "light",
@@ -64,7 +77,10 @@
       "resilience",
       "flame",
       "the traveller",
-      "worlds"
+      "worlds",
+      "strength",
+      "entropy",
+      "stasis"
     ]
   }
 }

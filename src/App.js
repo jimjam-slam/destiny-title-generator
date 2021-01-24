@@ -86,9 +86,11 @@ class App extends React.Component {
   }
 
   // getHashedElement: return a random element of an array based on the
-  // given hash
-  getHashedElement(array, hash) {
-    return(array[Math.abs(hash % array.length)]);
+  // given hash and power (a different part of the hash will be chosen based)
+  // on the power
+  getHashedElement(array, hash, power) {
+    const hashSubset = Math.floor(hash ^ -(power + 1));
+    return(array[Math.abs(hashSubset % array.length)]);
   }
 
   // getTitle: return a title for the user generated at random from one of the
@@ -109,11 +111,12 @@ class App extends React.Component {
 
     // get a random term from each list
     console.log("List keys:", listKeys)
-    listKeys.forEach(list => {
-      console.log("Selected list item:", list);
+    listKeys.forEach((list, index) => {
+      console.log("Selected list item:", list, "@ index", index);
       selectedWords[list] = this.getHashedElement(
         dictionary.lists[list],
-        userHash)
+        userHash,
+        index)
       });
     console.log(selectedWords);
 
@@ -154,7 +157,8 @@ class App extends React.Component {
                   "via=jimjam_slam&text=My+" +
                   "world-ending%2C+space-magic-sundering+%23Destiny2+%23DestinyTitle+is+" +
                   this.state.userName.toUpperCase() + "%2C+" +
-                  this.state.title.toUpperCase()}>
+                  this.state.title.toUpperCase() +
+                  ".+Get+yours+at+https://d2title.jamesgoldie.dev!"}>
 Tweet</a>
             </React.Fragment> :
             <h2>LOADING...</h2>
