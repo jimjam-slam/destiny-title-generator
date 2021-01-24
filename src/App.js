@@ -150,7 +150,8 @@ class App extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
                 href={
-                  "https://twitter.com/intent/tweet?text=My+" +
+                  "https://twitter.com/intent/tweet?" +
+                  "via=jimjam_slam&text=My+" +
                   "world-ending%2C+space-magic-sundering+%23Destiny2+%23DestinyTitle+is+" +
                   this.state.userName.toUpperCase() + "%2C+" +
                   this.state.title.toUpperCase()}>
