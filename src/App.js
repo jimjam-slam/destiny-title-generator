@@ -46,20 +46,29 @@ class App extends React.Component {
 
   }
 
+  // render a title, if we're ready and one has been typed in
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>{this.state.userName}</h1>
-          <h2>
-            {
-              this.state.isReady ?
+          <h2>Destiny title generator</h2>
+        {
+          this.state.isReady ?
+            <React.Fragment>
+              <input
+                id="usernameentry"
+                type="text" />
+              {/* <h1>{this.state.userName}</h1> */}
+              <h2>
                 <TitleGenerator
                   userName = {this.state.userName}
-                  dictionary = {this.state.dictionary} /> :
-                "NOT READY"
-            }
-          </h2>
+                  dictionary = {this.state.dictionary} />
+              </h2>
+            </React.Fragment> :
+            <h2>LOADING...</h2>
+        }
+
+          
           <p>By <a
             className="App-link"
             href="https://jamesgoldie.dev"
@@ -75,9 +84,7 @@ class App extends React.Component {
             rel="noopener noreferrer"
           >
             Bungie
-          </a>, the makers of Destiny.
-
-          </p>
+          </a>, the makers of Destiny.</p>
         </header>
             
       </div>
