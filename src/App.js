@@ -94,7 +94,7 @@ class App extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Rensa
+            Rensa (James Goldie)
           </a></p>
           <p>Not affiliated with <a
             className="App-link"
