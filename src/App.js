@@ -146,6 +146,9 @@ class App extends React.Component {
               </h3>
               <a
                 className="twitter-share-button"
+                data-size="large"
+                target="_blank"
+                rel="noopener noreferrer"
                 href={
                   "https://twitter.com/intent/tweet?text=My+" +
                   "world-ending%2C+space-magic-sundering+%23Destiny2+%23DestinyTitle+is+" +
