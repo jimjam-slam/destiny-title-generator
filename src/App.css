@@ -21,6 +21,10 @@
   margin-bottom: 3em;
 }
 
+label {
+  width: 100%;
+}
+
 #usernameentry {
   background-color: unset;
   border: none;
@@ -47,13 +51,24 @@
 #giventitle {
   letter-spacing: 1rem;
   margin: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .App-header p {
   margin-bottom: 0;
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 .App-link {
   color: #61dafb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.App-link:focus, .App-link:hover {
+  color: goldenrod;
+}
+
+.App-link:visited {
+  color: orange;
 }

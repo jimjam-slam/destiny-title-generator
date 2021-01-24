@@ -95,7 +95,7 @@ class App extends React.Component {
             rel="noopener noreferrer"
           >
             Rensa
-          </a>.</p>
+          </a></p>
           <p>Not affiliated with <a
             className="App-link"
             href="https://bungie.net"
@@ -103,7 +103,7 @@ class App extends React.Component {
             rel="noopener noreferrer"
           >
             Bungie
-          </a>, the makers of Destiny.</p>
+          </a>, the makers of Destiny</p>
         </header>
             
       </div>
