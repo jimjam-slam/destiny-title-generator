@@ -1,9 +1,10 @@
 import React from "react";
-// import logo from "./logo.svg";
-import './App.css';
-import TitleGenerator from "./TitleGenerator";
+import doT from "dot";
+import "./App.css";
 
 class App extends React.Component {
+
+  // --- lifecycle methods ----------------------------------------------------
 
   constructor(props) {
     super(props);
@@ -12,6 +13,7 @@ class App extends React.Component {
       isReady: false,
       isError: false,
       userName: "",
+      title: "",
       dictionary: {}
     };
     this.handleUserNameChange = this.handleUserNameChange.bind(this);
@@ -27,10 +29,8 @@ class App extends React.Component {
       "riko", "nathan", "luka", "tomáš", "robin", "ben", "aleksandar",
       "emma", "yasmine", "eliška", "aino", "chloe", "victoria", "nikau",
       "teiki", "ioane", "hina"];
-    this.setState({
-      userName: sampleNames[Math.floor(Math.random() * sampleNames.length)]
-    })
-
+    const initialName =
+      sampleNames[Math.floor(Math.random() * sampleNames.length)];
     console.log("Starting fetch...");
 
     this.setState({ isFetching: true });
@@ -43,7 +43,10 @@ class App extends React.Component {
           this.setState({
             isFetching: false,
             isReady: true,
-            dictionary: result
+            dictionary: result,
+            userName: initialName,
+            title: this.getTitle(initialName, result)
+
           })}
         )
       .catch(e => {
@@ -59,9 +62,65 @@ class App extends React.Component {
 
   // control the username entry state
   handleUserNameChange(event) {
-    this.setState({userName: event.target.value});
+    this.setState({
+      userName: event.target.value,
+      title: this.getTitle(event.target.value, this.state.dictionary)
+    });
   }
 
+  // --- title computation functions ------------------------------------------
+
+  // userHash: converts a username to a number
+  // from https://stackoverflow.com/a/8831937/3246758
+  getUserHash(userName) {
+    var hash = 0;
+    if (userName.length === 0) {
+        return hash;
+    }
+    for (var i = 0; i < userName.length; i++) {
+        var char = userName.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+  }
+
+  // getHashedElement: return a random element of an array based on the
+  // given hash
+  getHashedElement(array, hash) {
+    return(array[Math.abs(hash % array.length)]);
+  }
+
+  // getTitle: return a title for the user generated at random from one of the
+  // downloaded templates
+  getTitle(userName, dictionary) {
+
+    // hash user to a number for randomisation
+    const userHash = this.getUserHash(userName.toUpperCase());
+
+    console.log("Dictionary:", dictionary)
+    const userTemplate =
+      this.getHashedElement(dictionary.templates, userHash);
+    const templateFn = doT.template(userTemplate)
+
+    // get the names of all the lists referenced in the templates
+    let selectedWords = {};
+    const listKeys = Object.keys(dictionary.lists);
+
+    // get a random term from each list
+    console.log("List keys:", listKeys)
+    listKeys.forEach(list => {
+      console.log("Selected list item:", list);
+      selectedWords[list] = this.getHashedElement(
+        dictionary.lists[list],
+        userHash)
+      });
+    console.log(selectedWords);
+
+    // now use dot to interpolate the template using selectedWords
+    return(templateFn(selectedWords));
+  }
+  
   // render a title, if we're ready and one has been typed in
   render() {
     return (
@@ -79,10 +138,20 @@ class App extends React.Component {
                   onChange={this.handleUserNameChange} />
               </label>
               <h3 id="giventitle">
-                <TitleGenerator
-                  userName = {this.state.userName}
-                  dictionary = {this.state.dictionary} />
+                {this.state.title}
+                {/* <TitleGenerator
+                  userName={this.state.userName}
+                  dictionary={this.state.dictionary}
+                  onTitleChange={this.handleTitleChange} /> */}
               </h3>
+              <a
+                className="twitter-share-button"
+                href={
+                  "https://twitter.com/intent/tweet?text=My+" +
+                  "world-ending%2C+space-magic-sundering+%23Destiny2+%23DestinyTitle+is+" +
+                  this.state.userName.toUpperCase() + "%2C+" +
+                  this.state.title.toUpperCase()}>
+Tweet</a>
             </React.Fragment> :
             <h2>LOADING...</h2>
         }
