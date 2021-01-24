@@ -9,7 +9,7 @@ class TitleGenerator extends React.Component {
   // from https://stackoverflow.com/a/8831937/3246758
   getUserHash(userName) {
     var hash = 0;
-    if (userName.length == 0) {
+    if (userName.length === 0) {
         return hash;
     }
     for (var i = 0; i < userName.length; i++) {
