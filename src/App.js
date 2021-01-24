@@ -12,7 +12,7 @@ class App extends React.Component {
       isFetching: false,
       isReady: false,
       isError: false,
-      userName: "james",
+      userName: "rns",
       dictionary: {}
     };
   }
@@ -49,30 +49,37 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
+        <header className="App-header">
+          <h1>{this.state.userName}</h1>
+          <h2>
+            {
+              this.state.isReady ?
+                <TitleGenerator
+                  userName = {this.state.userName}
+                  dictionary = {this.state.dictionary} /> :
+                "NOT READY"
+            }
+          </h2>
+          <p>By <a
             className="App-link"
-            href="https://reactjs.org"
+            href="https://jamesgoldie.dev"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
-          </a>
-        </header> */}
-            <h1>{this.state.userName}</h1>
-            <h2>
-              {
-                this.state.isReady ?
-                  <TitleGenerator
-                    userName = {this.state.userName}
-                    dictionary = {this.state.dictionary} /> :
-                  "NOT READY"
-              }
-            </h2>
+            Rensa
+          </a>.</p>
+          <p>Not affiliated with <a
+            className="App-link"
+            href="https://bungie.net"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bungie
+          </a>, the makers of Destiny.
+
+          </p>
+        </header>
+            
       </div>
     );
   }

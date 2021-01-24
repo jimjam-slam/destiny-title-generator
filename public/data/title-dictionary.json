@@ -5,13 +5,13 @@
     "{{=it.adj_noun}} of {{=it.noun_concept}}",
     "{{=it.adj_noun}} of {{=it.noun_role}}s",
     "{{=it.noun_concept}}'s {{=it.noun_role}}",
-    "the {{=it.adjective}} {{=it.noun}}",
+    "the {{=it.adjective}} {{=it.noun_role}}",
     "the {{=it.adjective}}"
   ],
   "lists": {
     "adjective": [
       "sanctified",
-      "respendant",
+      "resplendant",
       "prime",
       "undying",
       "restorative",
