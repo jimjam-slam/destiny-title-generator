@@ -61,9 +61,6 @@ class TitleGenerator extends React.Component {
   
   // return a random title based on username
   render() {
-    console.log("Rendering title for", this.props.userName);
-    console.log("Using dictionary:");
-    console.log(this.props.dictionary);
     return(this.getTitle(this.props.userName));
   }
 }

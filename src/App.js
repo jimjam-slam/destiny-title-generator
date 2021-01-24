@@ -7,18 +7,29 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       isFetching: false,
       isReady: false,
       isError: false,
-      userName: "rns",
+      userName: "",
       dictionary: {}
     };
+    this.handleUserNameChange = this.handleUserNameChange.bind(this);
   }
 
   // componentDidMount: fetch the data dictionary, then mark as ready to go
   componentDidMount() {
+
+    // first up, pick an random initial starting name
+    const sampleNames = ["omar", "shaimaa", "maría", "yonas", "kristian",
+      "césar", "alysha", "ximena", "zoé", "yusif", "ma'ayan", "elie", "ahmet",
+      "zahra", "tamar", "bayarmaa", "emine", "爱", "莉", "波", "亮", "tatsuki",
+      "riko", "nathan", "luka", "tomáš", "robin", "ben", "aleksandar",
+      "emma", "yasmine", "eliška", "aino", "chloe", "victoria", "nikau",
+      "teiki", "ioane", "hina"];
+    this.setState({
+      userName: sampleNames[Math.floor(Math.random() * sampleNames.length)]
+    })
 
     console.log("Starting fetch...");
 
@@ -46,24 +57,32 @@ class App extends React.Component {
 
   }
 
+  // control the username entry state
+  handleUserNameChange(event) {
+    this.setState({userName: event.target.value});
+  }
+
   // render a title, if we're ready and one has been typed in
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h2>Destiny title generator</h2>
+          <h4 id="pagetitle">Destiny title generator</h4>
         {
           this.state.isReady ?
             <React.Fragment>
-              <input
-                id="usernameentry"
-                type="text" />
-              {/* <h1>{this.state.userName}</h1> */}
-              <h2>
+              <label>
+                <input
+                  id="usernameentry"
+                  type="text"
+                  value={this.state.userName}
+                  onChange={this.handleUserNameChange} />
+              </label>
+              <h3 id="giventitle">
                 <TitleGenerator
                   userName = {this.state.userName}
                   dictionary = {this.state.dictionary} />
-              </h2>
+              </h3>
             </React.Fragment> :
             <h2>LOADING...</h2>
         }

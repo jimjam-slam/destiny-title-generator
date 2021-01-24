@@ -9,15 +9,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: calc(10px + 2vmin);
   color: white;
   text-transform: uppercase;
 }
 
+#pagetitle {
+  letter-spacing: 1rem;
+  opacity: 0.5;
+  margin-bottom: 3em;
+}
+
 #usernameentry {
   background-color: unset;
   border: none;
-  border-bottom: 1px white solid;
+  border-bottom: 1px rgba(255, 255, 255, 0.25) solid;
   max-width: 90%;
   font-size: 3rem;
   color: white;
@@ -26,6 +33,7 @@
   transition: border 0.6s;
   font-family: inherit;
   font-weight: inherit;
+  letter-spacing: 1rem;
   text-align: center;
 }
 
@@ -34,6 +42,11 @@
 }
 #usernameentry:focus-visible {
   border-bottom: 1px solid goldenrod;
+}
+
+#giventitle {
+  letter-spacing: 1rem;
+  margin: 0.5rem;
 }
 
 .App-header p {
