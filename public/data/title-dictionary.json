@@ -1,0 +1,69 @@
+{
+  "templates": [
+    "{{=it.adjective}} {{=it.noun_role}}",
+    "{{=it.noun_role}} of {{=it.noun_concept}}",
+    "{{=it.adj_noun}} of {{=it.noun_concept}}",
+    "{{=it.adj_noun}} of {{=it.noun_role}}s",
+    "{{=it.noun_concept}}'s {{=it.noun_role}}",
+    "the {{=it.adjective}} {{=it.noun}}",
+    "the {{=it.adjective}}"
+  ],
+  "lists": {
+    "adjective": [
+      "sanctified",
+      "respendant",
+      "prime",
+      "undying",
+      "restorative",
+      "nexus",
+      "defiled",
+      "betrayed",
+      "unclean",
+      "timeless",
+      "taken",
+      "fallen",
+      "ruthless",
+      "deathsinger",
+      "darkblade"
+    ],
+    
+    "adj_noun": [
+      "betrayer",
+      "defiler",
+      "annihilator",
+      "slayer",
+      "devourer",
+      "flayer",
+      "restorer"
+    ],
+  
+    "noun_role": [
+      "kell",
+      "king",
+      "mind",
+      "conflux",
+      "guardian",
+      "emperor",
+      "master",
+      "apprentice",
+      "priest",
+      "fanatic",
+      "templar",
+      "descendent",
+      "ancestor"
+    ],
+  
+    "noun_concept": [
+      "darkness",
+      "light",
+      "hope",
+      "pain",
+      "agony",
+      "woe",
+      "resilience",
+      "flame",
+      "the traveller",
+      "worlds"
+    ]
+  }
+}
